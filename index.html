@@ -156,10 +156,13 @@
     width:60px; height:2px; background:var(--gold); margin:16px auto 26px;
   }
 
-  #hero{
-    background:linear-gradient(180deg, var(--cream) 0%, #fdf3e0 100%);
-    text-align:center; padding-top:60px;
-  }
+#hero{
+  background:
+    radial-gradient(circle at 15% 10%, rgba(212,175,55,0.16), transparent 55%),
+    radial-gradient(circle at 90% 25%, rgba(212,90,140,0.10), transparent 50%),
+    linear-gradient(180deg, var(--cream) 0%, #fdf3e0 100%);
+  text-align:center; padding-top:60px;
+}
   #hero .kupu{font-size:30px; color:var(--gold); margin-bottom:6px;}
   #hero .hero-names{
     font-family:'Playfair Display', serif; font-weight:900; font-size:38px; color:var(--maroon);
@@ -182,7 +185,12 @@
   .mini-countdown .num{font-size:20px; font-weight:700; font-family:'Playfair Display', serif;}
   .mini-countdown .lbl{font-size:9px; letter-spacing:1px; text-transform:uppercase; opacity:0.85;}
 
-  #mempelai{background:var(--cream);}
+#acara{
+  background:
+    radial-gradient(circle at 20% 20%, rgba(212,175,55,0.15), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(46,83,57,0.08), transparent 55%),
+    linear-gradient(180deg,#fdf3e0,var(--cream));
+}
   .couple-card{
     display:flex; flex-direction:column; align-items:center; text-align:center;
     margin-bottom:34px;
@@ -253,7 +261,12 @@
   .big-count .num{font-size:26px; font-weight:700; font-family:'Playfair Display', serif; color:var(--gold-light);}
   .big-count .lbl{font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--gold);}
 
-  #galeri{background:var(--cream);}
+#galeri{
+  background:
+    radial-gradient(circle at 15% 85%, rgba(212,175,55,0.14), transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(110,15,31,0.07), transparent 55%),
+    var(--cream);
+}
   .gallery-grid{
     display:grid; grid-template-columns:1fr 1fr; gap:12px;
   }
@@ -293,7 +306,12 @@
   .timeline-item .t-title{ font-family:'Playfair Display', serif; font-size:17px; color:var(--maroon-deep); margin:4px 0 6px; }
   .timeline-item .t-desc{ font-size:13px; color:#665244; line-height:1.7; }
 
-  #rsvp{background:linear-gradient(180deg,var(--cream),#fdf3e0);}
+#rsvp{
+  background:
+    radial-gradient(circle at 10% 15%, rgba(46,83,57,0.08), transparent 50%),
+    radial-gradient(circle at 90% 85%, rgba(212,175,55,0.14), transparent 55%),
+    linear-gradient(180deg,var(--cream),#fdf3e0);
+}
   .form-group{margin-bottom:16px;}
   .form-group label{display:block; font-size:12px; letter-spacing:1px; color:var(--maroon); margin-bottom:6px; font-weight:500;}
   .form-group input, .form-group select, .form-group textarea{
@@ -318,7 +336,12 @@
   .wish-item .wmsg{margin-top:4px; color:#555;}
   .empty-note{text-align:center; font-size:12.5px; color:#a08a63; font-style:italic;}
 
-  #kado{background:var(--cream);}
+#kado{
+  background:
+    radial-gradient(circle at 85% 10%, rgba(212,175,55,0.15), transparent 50%),
+    radial-gradient(circle at 15% 90%, rgba(212,90,140,0.08), transparent 55%),
+    var(--cream);
+}
   .gift-card{
     background:#fff; border:1px solid #eadfc4; border-radius:14px; padding:20px;
     margin-bottom:16px; box-shadow:0 8px 24px rgba(74,10,21,0.06);
@@ -344,7 +367,11 @@
   #closing .closing-names{font-family:'Playfair Display', serif; font-size:26px; color:var(--gold-light); margin-top:14px;}
 
   /* ---------- PANEL MEMPELAI (halaman terakhir, hanya muncul tanpa ?to=) ---------- */
-  #admin-panel{ background:var(--cream); }
+#admin-panel{
+  background:
+    radial-gradient(circle at 20% 20%, rgba(212,175,55,0.14), transparent 50%),
+    var(--cream);
+}
   #admin-panel .result-box{
     display:none; margin-top:18px; background:#fff; border:1px solid var(--gold); border-radius:10px;
     padding:16px; text-align:center;
@@ -731,38 +758,45 @@
   for(let i=0;i<14;i++) setTimeout(spawnPetal, i*110);
 
   // ---------- Open invitation: 3D burst ----------
-  function openInvitation(){
-    for(let i=0;i<48;i++){
+function openInvitation(){
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const totalPetals = 90;
+    for(let i=0;i<totalPetals;i++){
       setTimeout(()=>{
         const b = document.createElement('div');
         b.className = 'burst';
         b.textContent = petalEmojis[Math.floor(Math.random()*petalEmojis.length)];
-        const startX = 50 + (Math.random()-0.5)*20;
+        const startX = Math.random()*100;
+        const startY = Math.random()*100;
         b.style.left = startX + '%';
-        b.style.top = '45%';
-        const size = 16 + Math.random()*20;
+        b.style.top = startY + '%';
+        const size = 20 + Math.random()*28;
         b.style.fontSize = size + 'px';
+        b.style.transform = 'scale(0)';
+        b.style.opacity = '0';
         document.body.appendChild(b);
 
         const angle = Math.random()*Math.PI*2;
-        const spread = 120 + Math.random()*220;
+        const spread = 60 + Math.random()*140;
         const outX = Math.cos(angle) * spread;
-        const outY = Math.sin(angle) * spread * 0.4 - 60;
-        const depthZ = (Math.random()-0.5) * 300;
-        const fallY = window.innerHeight + 80;
+        const outY = Math.sin(angle) * spread * 0.5;
+        const depthZ = (Math.random()-0.5) * 340;
+        const fallY = vh + 120 - startY*(vh/100);
         const rotX = 360 + Math.random()*720;
         const rotY = 360 + Math.random()*720;
         const rotZ = 180 + Math.random()*720;
-        const dur = 1900 + Math.random()*1400;
+        const dur = 2200 + Math.random()*1600;
 
         b.animate([
-          { transform:`translate3d(0,0,0) rotateX(0) rotateY(0) rotateZ(0)`, opacity:1 },
-          { transform:`translate3d(${outX}px, ${outY}px, ${depthZ}px) rotateX(${rotX*0.3}deg) rotateY(${rotY*0.3}deg) rotateZ(${rotZ*0.3}deg)`, opacity:1, offset:0.35 },
-          { transform:`translate3d(${outX*1.3}px, ${fallY}px, ${depthZ}px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg)`, opacity:0.15 }
-        ], { duration: dur, easing:'cubic-bezier(.2,.7,.3,1)' });
+          { transform:`translate3d(0,0,0) scale(0) rotateX(0) rotateY(0) rotateZ(0)`, opacity:0, offset:0 },
+          { transform:`translate3d(0,0,${depthZ}px) scale(1.15) rotateX(${rotX*0.15}deg) rotateY(${rotY*0.15}deg) rotateZ(${rotZ*0.15}deg)`, opacity:1, offset:0.14 },
+          { transform:`translate3d(${outX}px, ${outY}px, ${depthZ}px) scale(1) rotateX(${rotX*0.4}deg) rotateY(${rotY*0.4}deg) rotateZ(${rotZ*0.4}deg)`, opacity:1, offset:0.4 },
+          { transform:`translate3d(${outX*1.4}px, ${fallY}px, ${depthZ}px) scale(0.85) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg)`, opacity:0.1, offset:1 }
+        ], { duration: dur, easing:'cubic-bezier(.16,.7,.2,1)' });
 
         setTimeout(()=>b.remove(), dur + 300);
-      }, i*30);
+      }, i*14);
     }
 
     setTimeout(()=>{
