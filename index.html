@@ -136,8 +136,9 @@
     margin-bottom:14px;
   }
   #cover .cover-names{
-    font-size:44px; line-height:1.15; font-weight:700; color:var(--gold-light);
+    font-size:44px; line-height:1.2; font-weight:700; color:var(--gold-light);
     text-shadow:0 2px 18px rgba(0,0,0,0.4);
+    text-align:center;
   }
   #cover .amp{font-family:'Cormorant Garamond', serif; font-style:italic; font-size:34px; color:var(--gold); display:block; margin:4px 0;}
   #cover .cover-sub{margin-top:18px; font-size:14px; letter-spacing:1px; color:#F1E4C0;}
@@ -157,22 +158,20 @@
   @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
   #cover .ornament-bottom{position:absolute; bottom:18px; font-size:11px; letter-spacing:3px; color:#9c7b3f;}
 
-  .burst{position:fixed; z-index:300; pointer-events:none; will-change:transform, opacity; contain:layout style paint; backface-visibility:hidden;}
-
   .mega-petal{
-    position:fixed; z-index:300; pointer-events:none;
+    position:absolute; z-index:300; pointer-events:none;
     will-change:transform, opacity; contain:layout style paint; backface-visibility:hidden;
   }
   .mega-petal.from-left{ animation:slideInLeftFade var(--dur,2200ms) ease-in-out both; }
   .mega-petal.from-right{ animation:slideInRightFade var(--dur,2200ms) ease-in-out both; }
   @keyframes slideInLeftFade{
-    0%{ transform:translateX(-115vw) scale(0.82); opacity:0; }
+    0%{ transform:translateX(-600px) scale(0.82); opacity:0; }
     22%{ opacity:1; }
     55%{ transform:translateX(0) scale(1); opacity:1; }
     100%{ transform:translateX(0) scale(1.04); opacity:0; }
   }
   @keyframes slideInRightFade{
-    0%{ transform:translateX(115vw) scale(0.82); opacity:0; }
+    0%{ transform:translateX(600px) scale(0.82); opacity:0; }
     22%{ opacity:1; }
     55%{ transform:translateX(0) scale(1); opacity:1; }
     100%{ transform:translateX(0) scale(1.04); opacity:0; }
@@ -207,13 +206,17 @@
 }
   #hero .kupu{font-size:30px; color:var(--gold); margin-bottom:6px;}
   #hero .hero-names{
-    font-family:'Playfair Display', serif; font-weight:900; font-size:38px; color:var(--maroon);
-    line-height:1.25;
+    font-family:'Playfair Display', serif; font-weight:900; font-size:34px; color:var(--maroon);
+    line-height:1.3; text-align:center;
   }
-  #hero .amp2{color:var(--gold); font-style:italic; font-family:'Cormorant Garamond', serif;}
+  #hero .amp2{
+    display:block; color:var(--gold); font-style:italic; font-family:'Cormorant Garamond', serif;
+    font-size:26px; margin:8px 0; line-height:1; text-align:center;
+  }
   #hero .verse{
     font-family:'Cormorant Garamond', serif; font-style:italic; font-size:17px;
     color:#5b4a3f; max-width:340px; margin:22px auto 0; line-height:1.75;
+    text-align:center;
   }
   #hero .verse-ref{display:block; margin-top:10px; font-size:13px; color:var(--gold); font-style:normal; letter-spacing:1px;}
 
@@ -417,9 +420,15 @@
     text-align:center; color:var(--gold-light); padding:56px 28px 70px;
     position:relative;
   }
-  #closing .closing-quote{font-family:'Cormorant Garamond', serif; font-style:italic; font-size:16px; max-width:320px; margin:0 auto 20px; line-height:1.8; color:#F1E4C0;}
-  #closing .closing-names{font-family:'Playfair Display', serif; font-size:26px; color:var(--gold-light); margin-top:14px;}
-  #closing-petals{ position:absolute; inset:0; overflow:hidden; z-index:0; pointer-events:none; }
+  #closing .closing-quote{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:16px;
+    max-width:320px; margin:0 auto 20px; line-height:1.8; color:#F1E4C0;
+    text-align:center;
+  }
+  #closing .closing-names{
+    font-family:'Playfair Display', serif; font-size:26px; color:var(--gold-light);
+    margin-top:14px; text-align:center;
+  }
 
   /* ---------- PANEL MEMPELAI (halaman terakhir, hanya muncul tanpa ?to=) ---------- */
 #admin-panel{
@@ -473,7 +482,7 @@
     <div class="ornament-top">✦ ❀ ✦</div>
     <div class="eyebrow">The Wedding Of</div>
     <div class="cover-names serif">
-      Kio <span class="amp">&</span> Baso
+      Saskia <span class="amp">&</span> Bilal
     </div>
     <div class="cover-sub">Kepada Bapak/Ibu/Saudara/i</div>
     <div class="guest-box">
@@ -489,9 +498,9 @@
     <div id="content">
 
       <section id="hero" class="reveal photo-section">
-        <div class="corner-bouquet top-right">🌺🌼🌸</div>
+        <div class="corner-bouquet top-right">🌸🏵️🌸</div>
         <div class="kupu reveal-child">❀ ✦ ❀</div>
-        <div class="hero-names serif reveal-child">Saskia Widya Ningsih<span class="amp2 script"><br>&amp;</span>Muh. Bilal Genda Ali</div>
+        <div class="hero-names serif reveal-child">Saskia Widya Ningsih<span class="amp2 script">&amp;</span>Muh. Bilal Genda Ali</div>
         <p class="verse reveal-child">"Sipakatau, sipakalebbi, sipakainge. Dalam cinta kami belajar untuk saling memanusiakan, saling memuliakan, dan saling mengingatkan. Dengan restu Allah SWT dan doa dari keluarga serta sahabat, kami melangkah menuju kehidupan yang baru sebagai satu keluarga."
         </p>
         <div class="mini-countdown reveal-child" id="mini-countdown"></div>
@@ -500,8 +509,8 @@
       <div class="songket-band thin"></div>
 
       <section id="mempelai" class="reveal photo-section">
-        <div class="corner-bouquet top-right">🌸🌼🌺</div>
-        <div class="corner-bouquet bottom-left">🌼🌺🌸</div>
+        <div class="corner-bouquet top-right">🌸🌼🦋</div>
+        <div class="corner-bouquet bottom-left">🌼🦋🌸</div>
         <div class="section-eyebrow reveal-child">Mempelai</div>
         <div class="section-title serif reveal-child">Kedua Mempelai</div>
         <div class="divider reveal-child"></div>
@@ -509,10 +518,10 @@
         <div class="couple-card reveal-child">
           <div class="avatar-ring">
             <div class="inner">
-              <img src="foto-saskia.jpeg" alt="Foto Saskia Widya Ningsih" style="object-position:center 20%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="foto-saskia.png" alt="Foto Saskia Widya Ningsih" style="object-position:center 20%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
               <div class="placeholder-fallback">
                 <span class="pf-icon">🤍</span>
-                <span class="pf-label">Foto Saskia<br>(ganti foto-saskia.jpeg)</span>
+                <span class="pf-label">Foto Saskia<br>(ganti foto-saskia.png)</span>
               </div>
             </div>
           </div>
@@ -525,10 +534,10 @@
         <div class="couple-card reveal-child">
           <div class="avatar-ring">
             <div class="inner">
-              <img src="foto-bilal.jpeg" alt="Foto Muh. Bilal Genda Ali" style="object-position:center 20%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="foto-bilal.png" alt="Foto Muh. Bilal Genda Ali" style="object-position:center 20%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
               <div class="placeholder-fallback">
                 <span class="pf-icon">🤍</span>
-                <span class="pf-label">Foto Bilal<br>(ganti foto-bilal.jpeg)</span>
+                <span class="pf-label">Foto Bilal<br>(ganti foto-bilal.png)</span>
               </div>
             </div>
           </div>
@@ -540,7 +549,7 @@
       <div class="songket-band"></div>
 
       <section id="love-story" class="reveal photo-section">
-        <div class="corner-bouquet top-right">🌺🌼🌸</div>
+        <div class="corner-bouquet top-right">🌸🏵️🌸</div>
         <div class="section-eyebrow reveal-child">Perjalanan Kami</div>
         <div class="section-title serif reveal-child">Love Story</div>
         <div class="divider reveal-child"></div>
@@ -566,8 +575,8 @@
       <div class="songket-band thin"></div>
 
       <section id="acara" class="reveal photo-section">
-        <div class="corner-bouquet top-right">🌼🌸🌺</div>
-        <div class="corner-bouquet bottom-left">🌸🌺🌼</div>
+        <div class="corner-bouquet top-right">🌸🏵️🌸</div>
+        <div class="corner-bouquet bottom-left">🌸🏵️🌸</div>
         <div class="section-eyebrow reveal-child">Waktu & Tempat</div>
         <div class="section-title serif reveal-child">Detail Acara</div>
         <div class="divider reveal-child"></div>
@@ -575,7 +584,7 @@
         <div class="event-card reveal-child">
           <div class="event-title">💍 Akad & Resepsi Pernikahan</div>
 
-          <div class="event-sub">🕌 Akad Nikah</div>
+          <div class="event-sub">Akad Nikah</div>
           <div class="event-detail">
             <b>Hari, Tanggal:</b> Minggu, 9 Agustus 2026<br>
             <b>Waktu:</b> 08.00 WITA – Selesai
@@ -605,22 +614,22 @@
       </section>
 
       <section id="galeri" class="reveal photo-section">
-        <div class="corner-bouquet top-right">🌺🌼🌸</div>
+        <div class="corner-bouquet top-right">🌸🏵️🌸</div>
         <div class="section-eyebrow reveal-child">Galeri</div>
         <div class="section-title serif reveal-child">Momen Kami</div>
         <div class="divider reveal-child"></div>
         <div class="gallery-grid reveal-child">
           <div class="ph">
             <img src="galeri-1.jpeg" alt="Galeri 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <span class="ic" style="display:flex;">📷</span><span class="ph-label" style="display:flex;">Pertunangan</span>
+            <span class="ic" style="display:flex;">📷</span><span class="ph-label" style="display:flex;"></span>
           </div>
           <div class="ph">
             <img src="galeri-2.jpeg" alt="Galeri 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <span class="ic" style="display:flex;">📷</span><span class="ph-label" style="display:flex;">Prewedding</span>
+            <span class="ic" style="display:flex;">📷</span><span class="ph-label" style="display:flex;"></span>
           </div>
           <div class="ph">
             <img src="galeri-4.jpeg" alt="Galeri 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <span class="ic" style="display:flex;">📷</span><span class="ph-label" style="display:flex;">Momen Spesial</span>
+            <span class="ic" style="display:flex;">📷</span><span class="ph-label" style="display:flex;"></span>
           </div>
         </div>
       </section>
@@ -664,7 +673,7 @@
       <div class="songket-band"></div>
 
       <section id="kado" class="reveal photo-section">
-        <div class="corner-bouquet top-right">🌼🌺🌸</div>
+        <div class="corner-bouquet top-right">🌸🏵️🌸</div>
         <div class="section-eyebrow reveal-child">Tanda Kasih</div>
         <div class="section-title serif reveal-child">Kirim Hadiah</div>
         <div class="divider reveal-child"></div>
@@ -673,7 +682,7 @@
         </p>
 
         <div class="gift-card reveal-child">
-          <div class="gift-title">💰 Kirim Uang / Transfer</div>
+          <div class="gift-title">Kirim Uang / Transfer</div>
           <div class="gift-row">
             <div class="gtext">DANA <b>085255105736</b><br>a.n SASXXX WIDXX NINXXXX</div>
             <button class="copy-btn" onclick="copyText('085255105736', this)">Salin</button>
@@ -697,11 +706,10 @@
       </section>
 
       <section id="closing" class="reveal photo-section" data-tone="dark">
-        <div id="closing-petals"></div>
         <div class="ornament-top reveal-child" style="margin-bottom:14px;">❀ ✦ ❀</div>
         <p class="closing-quote reveal-child">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
         <div class="closing-names serif reveal-child">Saskia &amp; Bilal</div>
-        <p class="reveal-child" style="font-size:12px; margin-top:16px; color:#c9a97a; letter-spacing:1px;">9–10 Agustus 2026 • Maros, Sulawesi Selatan</p>
+        <p class="reveal-child" style="font-size:12px; margin-top:16px; color:#c9a97a; letter-spacing:1px; text-align:center;">9–10 Agustus 2026 • Maros, Sulawesi Selatan</p>
       </section>
 
       <!-- ============================================================
@@ -746,8 +754,8 @@
       const file = momentPhotos[Math.floor(Math.random()*momentPhotos.length)];
       const dark = sec.dataset.tone === 'dark';
       const overlay = dark
-        ? 'linear-gradient(180deg, rgba(74,10,21,0.90), rgba(74,10,21,0.93))'
-        : 'linear-gradient(180deg, rgba(255,248,233,0.92), rgba(253,243,224,0.94))';
+        ? 'linear-gradient(180deg, rgba(74,10,21,0.60), rgba(74,10,21,0.66))'
+        : 'linear-gradient(180deg, rgba(255,248,233,0.58), rgba(253,243,224,0.64))';
       sec.style.backgroundImage = `${overlay}, url('${file}')`;
     });
   }
@@ -807,7 +815,7 @@
   renderLinkHistory();
 
   // ---------- Petal 3D scatter di cover (ambient, besar & rimbun seperti bunga semerbak) ----------
-  const petalEmojis = ['🌺','🌸','💐','🌼','🏵️','🌷','✨'];
+  const petalEmojis = ['🏵️','🌸','🌸','🏵️','🏵️','🌸','🏵️'];
   const petalLayer = document.getElementById('petal-layer');
 
   function spawnPetal(big){
@@ -819,7 +827,7 @@
     const scale = 0.85 + Math.random()*0.4;
     const duration = 5 + Math.random()*3;
     const driftX = (Math.random()-0.5) * 140;
-    const rz = 120 + Math.random()*300;
+    const rz = 150 + Math.random()*400;
 
     p.style.setProperty('--pscale', scale.toFixed(2));
     p.style.setProperty('--px', driftX + 'px');
@@ -833,8 +841,12 @@
   const ambientInterval = setInterval(()=>spawnPetal(Math.random()<0.3), 420);
   for(let i=0;i<12;i++) setTimeout(()=>spawnPetal(i%3===0), i*120);
 
-  // ---------- Open invitation: bunga semerbak besar menutup layar ----------
-  // ---------- Bunga besar penuh layar saat buka undangan: masuk dari kiri & kanan, fade in/out ----------
+  // ---------- Bunga besar penuh HALAMAN COVER saat buka undangan: masuk dari kiri & kanan, fade in/out ----------
+  // Elemen ditaruh DI DALAM #cover (bukan document.body) supaya animasinya
+  // terkunci di dalam lebar "kartu" undangan (max-width:480px), bukan
+  // melebar ke seluruh layar browser/website. Ini juga yang membuat animasi
+  // hanya memenuhi halaman pembuka (cover), bukan seluruh website.
+  const coverEl = document.getElementById('cover');
   function spawnMegaPetals(){
     const rows = 12;
     for(let i=0;i<rows;i++){
@@ -853,7 +865,7 @@
     const dur = 2100 + Math.random()*500;
     el.style.setProperty('--dur', dur + 'ms');
     el.style.animationDelay = delay + 'ms';
-    document.body.appendChild(el);
+    coverEl.appendChild(el);
     setTimeout(()=>el.remove(), dur + delay + 200);
   }
 
@@ -873,7 +885,6 @@ function openInvitation(){
       music.play().catch(()=>{});
       document.getElementById('music-toggle').classList.add('spinning');
       startAmbientPetals();
-      spawnClosingBouquet();
       updateProgress();
     }, 600);
   }
@@ -932,23 +943,6 @@ function openInvitation(){
     if(ambientRunning) return;
     ambientRunning = true;
     setInterval(spawnAmbientPetal, 1800);
-  }
-
-  // Bunga besar menghiasi halaman penutup (persis seperti screenshot terakhir)
-  function spawnClosingBouquet(){
-    const layer = document.getElementById('closing-petals');
-    if(!layer) return;
-    for(let i=0;i<22;i++){
-      const p = document.createElement('div');
-      p.style.position = 'absolute';
-      p.style.left = Math.random()*100 + '%';
-      p.style.top = Math.random()*100 + '%';
-      p.style.fontSize = (26 + Math.random()*30) + 'px';
-      p.style.opacity = (0.35 + Math.random()*0.4).toFixed(2);
-      p.style.transform = `rotate(${Math.random()*360}deg)`;
-      p.textContent = petalEmojis[Math.floor(Math.random()*petalEmojis.length)];
-      layer.appendChild(p);
-    }
   }
 
   function fireConfetti(){
