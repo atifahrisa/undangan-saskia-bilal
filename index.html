@@ -159,11 +159,33 @@
 
   .burst{position:fixed; z-index:300; pointer-events:none; will-change:transform, opacity; contain:layout style paint; backface-visibility:hidden;}
 
+  .mega-petal{
+    position:fixed; z-index:300; pointer-events:none;
+    will-change:transform, opacity; contain:layout style paint; backface-visibility:hidden;
+  }
+  .mega-petal.from-left{ animation:slideInLeftFade var(--dur,2200ms) ease-in-out both; }
+  .mega-petal.from-right{ animation:slideInRightFade var(--dur,2200ms) ease-in-out both; }
+  @keyframes slideInLeftFade{
+    0%{ transform:translateX(-115vw) scale(0.82); opacity:0; }
+    22%{ opacity:1; }
+    55%{ transform:translateX(0) scale(1); opacity:1; }
+    100%{ transform:translateX(0) scale(1.04); opacity:0; }
+  }
+  @keyframes slideInRightFade{
+    0%{ transform:translateX(115vw) scale(0.82); opacity:0; }
+    22%{ opacity:1; }
+    55%{ transform:translateX(0) scale(1); opacity:1; }
+    100%{ transform:translateX(0) scale(1.04); opacity:0; }
+  }
+
   #content{display:none;}
   #content.show{display:block; animation:fadeUp 0.9s ease both;}
   @keyframes fadeUp{from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);}}
 
   section{padding:52px 28px; position:relative;}
+  .photo-section{
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+  }
   .section-eyebrow{
     text-align:center; font-size:11px; letter-spacing:4px; text-transform:uppercase;
     color:var(--maroon); font-weight:600; margin-bottom:10px;
@@ -258,6 +280,18 @@
   }
   .event-card .event-detail{font-size:13.5px; color:#555; line-height:1.9;}
   .event-card .event-detail b{color:var(--ink);}
+  .event-card .event-sub{
+    font-size:14.5px; font-weight:600; color:var(--maroon); letter-spacing:0.5px;
+    margin:14px 0 6px;
+  }
+  .event-card .event-sub.script{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600;
+    font-size:19px; color:var(--gold); letter-spacing:0.3px;
+  }
+  .event-card .event-divider{
+    height:1px; background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin:14px 0;
+  }
   .maps-btn{
     display:inline-block; margin-top:12px; padding:9px 18px; border:1.5px solid var(--maroon);
     color:var(--maroon); border-radius:24px; font-size:12px; text-decoration:none; font-weight:500;
@@ -298,10 +332,9 @@
     border:1px dashed var(--gold);
     transition:transform 0.4s cubic-bezier(.34,1.3,.4,1), box-shadow 0.4s ease;
   }
-  .gallery-grid .ph:hover{ transform:translateY(-4px) rotate(-1deg); box-shadow:0 10px 22px rgba(74,10,21,0.15); }
-  .gallery-grid .ph:nth-child(1){ border-radius:50%; }
-  .gallery-grid .ph:nth-child(2){ border-radius:16px 4px 16px 4px; }
-  .gallery-grid .ph:nth-child(3){ border-radius:4px 16px 4px 16px; grid-column:1 / -1; max-width:220px; margin:0 auto; }
+  .gallery-grid .ph{ border-radius:10px; }
+  .gallery-grid .ph:hover{ transform:translateY(-4px); box-shadow:0 10px 22px rgba(74,10,21,0.15); }
+  .gallery-grid .ph:nth-child(3){ grid-column:1 / -1; }
   .gallery-grid .ph img{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
   .gallery-grid .ph span.ic{font-size:22px;}
   .gallery-grid .ph .ph-label{ position:relative; z-index:1; font-weight:500; }
@@ -440,9 +473,7 @@
     <div class="ornament-top">✦ ❀ ✦</div>
     <div class="eyebrow">The Wedding Of</div>
     <div class="cover-names serif">
-      Saskia Widya Ningsih
-      <span class="amp">&</span>
-      Bilal Putu Kacang
+      Saskia Widya Ningsih <span class="amp">&</span> Muh. Bilal Genda Ali
     </div>
     <div class="cover-sub">Kepada Bapak/Ibu/Saudara/i</div>
     <div class="guest-box">
@@ -450,17 +481,17 @@
       <div class="guest-name" id="guest-name-cover">Tamu Undangan</div>
     </div>
     <button id="open-btn" onclick="openInvitation()">✧ Buka Undangan ✧</button>
-    <div class="ornament-bottom">MAKASSAR • 10 AGUSTUS 2026</div>
+    <div class="ornament-bottom">MAROS • 9–10 AGUSTUS 2026</div>
   </div>
 
   <!-- MAIN CONTENT -->
   <div class="frame">
     <div id="content">
 
-      <section id="hero" class="reveal">
+      <section id="hero" class="reveal photo-section">
         <div class="corner-bouquet top-right">🌺🌼🌸</div>
         <div class="kupu reveal-child">❀ ✦ ❀</div>
-        <div class="hero-names serif reveal-child">Saskia Widya Ningsih<span class="amp2 script"><br>&amp;</span>Bilal Putu Kacang</div>
+        <div class="hero-names serif reveal-child">KIOO<span class="amp2 script"><br>&amp;</span>BASO</div>
         <p class="verse reveal-child">"Sipakatau, sipakalebbi, sipakainge. Dalam cinta kami belajar untuk saling memanusiakan, saling memuliakan, dan saling mengingatkan. Dengan restu Allah SWT dan doa dari keluarga serta sahabat, kami melangkah menuju kehidupan yang baru sebagai satu keluarga."
         </p>
         <div class="mini-countdown reveal-child" id="mini-countdown"></div>
@@ -468,7 +499,7 @@
 
       <div class="songket-band thin"></div>
 
-      <section id="mempelai" class="reveal">
+      <section id="mempelai" class="reveal photo-section">
         <div class="corner-bouquet top-right">🌸🌼🌺</div>
         <div class="corner-bouquet bottom-left">🌼🌺🌸</div>
         <div class="section-eyebrow reveal-child">Mempelai</div>
@@ -487,7 +518,6 @@
           </div>
           <div class="name serif">Saskia Widya Ningsih</div>
           <div class="role">Mempelai Wanita</div>
-          <div class="parents">Putri dari Keluarga Besar<br>Bapak & Ibu Ningsih</div>
         </div>
 
         <div class="couple-and reveal-child">&</div>
@@ -495,22 +525,21 @@
         <div class="couple-card reveal-child">
           <div class="avatar-ring">
             <div class="inner">
-              <img src="foto-bilal.jpeg" alt="Foto Bilal Putu Kacang" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="foto-bilal.jpeg" alt="Foto Muh. Bilal Genda Ali" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
               <div class="placeholder-fallback">
                 <span class="pf-icon">🤍</span>
                 <span class="pf-label">Foto Bilal<br>(ganti foto-bilal.jpeg)</span>
               </div>
             </div>
           </div>
-          <div class="name serif">Bilal Putu Kacang</div>
+          <div class="name serif">Muh. Bilal Genda Ali</div>
           <div class="role">Mempelai Pria</div>
-          <div class="parents">Putra dari Keluarga Besar<br>Bapak & Ibu Kacang</div>
         </div>
       </section>
 
       <div class="songket-band"></div>
 
-      <section id="love-story" class="reveal">
+      <section id="love-story" class="reveal photo-section">
         <div class="corner-bouquet top-right">🌺🌼🌸</div>
         <div class="section-eyebrow reveal-child">Perjalanan Kami</div>
         <div class="section-title serif reveal-child">Love Story</div>
@@ -518,21 +547,16 @@
         <div class="timeline">
           <div class="timeline-item">
             <div class="t-date">Awal Bertemu</div>
-            <div class="t-title serif">Dipertemukan di Bangku SMA</div>
-            <div class="t-desc">Semua berawal di salah satu SMA di Tanralili. Saskia, murid pindahan yang baru menginjakkan kaki di sekolah itu, kebetulan ditempatkan satu kelas dengan Bilal. Dari perkenalan sederhana sebagai teman sekelas, tidak ada yang menyangka kisah ini akan berlanjut jauh lebih panjang.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="t-date">Satu Kelas, Semakin Dekat</div>
-            <div class="t-title serif">Tumbuh Bersama di Ruang yang Sama</div>
-            <div class="t-desc">Hari demi hari dilalui berdua di ruang kelas yang sama, saling mengenal kebiasaan dan cerita masing-masing. Pertemanan yang awalnya biasa perlahan tumbuh menjadi sesuatu yang lebih berarti.</div>
+            <div class="t-title serif">Dipertemukan Karena Pindah Sekolah</div>
+            <div class="t-desc">Semua berawal di salah satu SMA di Tanralili, saat Saskia pindah sekolah dan kebetulan ditempatkan satu kelas dengan Bilal. Dari sanalah kisah ini bermula.</div>
           </div>
           <div class="timeline-item">
             <div class="t-date">Lika-liku & Plot Twist</div>
             <div class="t-title serif">Melewati Banyak Cerita Tak Terduga</div>
-            <div class="t-desc">Waktu terus berjalan, membawa cerita, jarak, dan plot twist yang tidak pernah diduga sebelumnya. Namun setiap babak yang dilalui justru semakin meyakinkan bahwa mereka berdua ditakdirkan untuk bersama.</div>
+            <div class="t-desc">Waktu terus berjalan, membawa cerita, jarak, dan plot twist yang tak pernah diduga. Namun setiap babak yang dilalui justru semakin meyakinkan bahwa keduanya ditakdirkan untuk bersama.</div>
           </div>
           <div class="timeline-item">
-            <div class="t-date">10 Agustus 2026</div>
+            <div class="t-date">9–10 Agustus 2026</div>
             <div class="t-title serif">Menunaikan Sunnah Rasul</div>
             <div class="t-desc">Dari teman sekelas menjadi dua insan yang siap menunaikan sunnah Rasul, menikah dan membangun keluarga. Dengan penuh syukur, kami mengundang Bapak/Ibu/Saudara/i untuk menyaksikan dan mendoakan hari bahagia kami.</div>
           </div>
@@ -541,7 +565,7 @@
 
       <div class="songket-band thin"></div>
 
-      <section id="acara" class="reveal">
+      <section id="acara" class="reveal photo-section">
         <div class="corner-bouquet top-right">🌼🌸🌺</div>
         <div class="corner-bouquet bottom-left">🌸🌺🌼</div>
         <div class="section-eyebrow reveal-child">Waktu & Tempat</div>
@@ -550,23 +574,37 @@
 
         <div class="event-card reveal-child">
           <div class="event-title">💍 Akad & Resepsi Pernikahan</div>
+
+          <div class="event-sub">🕌 Akad Nikah</div>
+          <div class="event-detail">
+            <b>Hari, Tanggal:</b> Minggu, 9 Agustus 2026<br>
+            <b>Waktu:</b> 08.00 WITA – Selesai
+          </div>
+
+          <div class="event-divider"></div>
+
+          <div class="event-sub script">Resepsi Pernikahan</div>
           <div class="event-detail">
             <b>Hari, Tanggal:</b> Senin, 10 Agustus 2026<br>
-            <b>Waktu:</b> 11.00 WITA – Selesai<br>
-            <b>Lokasi:</b> Perumahan Griya Bonto Jolong
+            <b>Waktu:</b> 11.00 WITA – Selesai
           </div>
-          <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Perumahan+Griya+Bonto+Jolong" target="_blank" rel="noopener">📍 Buka Peta</a>
-          <a class="cal-btn" href="#" id="add-cal-link">🗓️ Simpan Tanggal</a>
+
+          <div class="event-detail" style="margin-top:10px;">
+            <b>Lokasi:</b> Prum. Griya Pondok Mandiri Blok B/1 Bontojolong Maros
+          </div>
+          <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Prum.+Griya+Pondok+Mandiri+Blok+B%2F1+Bontojolong+Maros" target="_blank" rel="noopener">📍 Buka Peta</a>
+          <a class="cal-btn" href="#" id="add-cal-link-akad">🗓️ Akad</a>
+          <a class="cal-btn" href="#" id="add-cal-link-resepsi">🗓️ Resepsi</a>
         </div>
       </section>
 
-      <section id="countdown-full" class="reveal">
+      <section id="countdown-full" class="reveal photo-section" data-tone="dark">
         <div class="section-eyebrow reveal-child">Menghitung Hari</div>
         <div class="section-title serif reveal-child">Menuju Hari Bahagia</div>
         <div class="big-count reveal-child" id="big-countdown"></div>
       </section>
 
-      <section id="galeri" class="reveal">
+      <section id="galeri" class="reveal photo-section">
         <div class="corner-bouquet top-right">🌺🌼🌸</div>
         <div class="section-eyebrow reveal-child">Galeri</div>
         <div class="section-title serif reveal-child">Momen Kami</div>
@@ -589,7 +627,7 @@
 
       <div class="songket-band thin"></div>
 
-      <section id="rsvp" class="reveal">
+      <section id="rsvp" class="reveal photo-section">
         <div class="section-eyebrow reveal-child">Konfirmasi Kehadiran</div>
         <div class="section-title serif reveal-child">RSVP</div>
         <div class="divider reveal-child"></div>
@@ -625,7 +663,7 @@
 
       <div class="songket-band"></div>
 
-      <section id="kado" class="reveal">
+      <section id="kado" class="reveal photo-section">
         <div class="corner-bouquet top-right">🌼🌺🌸</div>
         <div class="section-eyebrow reveal-child">Tanda Kasih</div>
         <div class="section-title serif reveal-child">Kirim Hadiah</div>
@@ -658,12 +696,12 @@
         </div>
       </section>
 
-      <section id="closing" class="reveal">
+      <section id="closing" class="reveal photo-section" data-tone="dark">
         <div id="closing-petals"></div>
         <div class="ornament-top reveal-child" style="margin-bottom:14px;">❀ ✦ ❀</div>
         <p class="closing-quote reveal-child">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
         <div class="closing-names serif reveal-child">Saskia &amp; Bilal</div>
-        <p class="reveal-child" style="font-size:12px; margin-top:16px; color:#c9a97a; letter-spacing:1px;">10 Agustus 2026 • Maros, Sulawesi Selatan</p>
+        <p class="reveal-child" style="font-size:12px; margin-top:16px; color:#c9a97a; letter-spacing:1px;">9–10 Agustus 2026 • Maros, Sulawesi Selatan</p>
       </section>
 
       <!-- ============================================================
@@ -701,6 +739,20 @@
   </audio>
 
 <script>
+  // ---------- Latar foto momen pernikahan di tiap section (bukan cover) ----------
+  const momentPhotos = ['galeri-1.jpeg','galeri-2.jpeg','galeri-3.jpeg','galeri-4.jpeg','galeri-5.jpeg','galeri-6.jpeg'];
+  function applyPhotoBackgrounds(){
+    document.querySelectorAll('.photo-section').forEach(sec=>{
+      const file = momentPhotos[Math.floor(Math.random()*momentPhotos.length)];
+      const dark = sec.dataset.tone === 'dark';
+      const overlay = dark
+        ? 'linear-gradient(180deg, rgba(74,10,21,0.90), rgba(74,10,21,0.93))'
+        : 'linear-gradient(180deg, rgba(255,248,233,0.92), rgba(253,243,224,0.94))';
+      sec.style.backgroundImage = `${overlay}, url('${file}')`;
+    });
+  }
+  applyPhotoBackgrounds();
+
   // ---------- Guest name & mode dari URL ----------
   const params = new URLSearchParams(window.location.search);
   const rawGuestParam = params.get('to');
@@ -782,42 +834,31 @@
   for(let i=0;i<12;i++) setTimeout(()=>spawnPetal(i%3===0), i*120);
 
   // ---------- Open invitation: bunga semerbak besar menutup layar ----------
-function openInvitation(){
-    const vh = window.innerHeight;
-    const totalPetals = 55;
-    for(let i=0;i<totalPetals;i++){
-      setTimeout(()=>{
-        const b = document.createElement('div');
-        b.className = 'burst';
-        b.textContent = petalEmojis[Math.floor(Math.random()*petalEmojis.length)];
-        const startX = Math.random()*100;
-        const startY = Math.random()*100;
-        b.style.left = startX + '%';
-        b.style.top = startY + '%';
-        const size = 30 + Math.random()*38;
-        b.style.fontSize = size + 'px';
-        b.style.transform = 'scale(0)';
-        b.style.opacity = '0';
-        document.body.appendChild(b);
-
-        const angle = Math.random()*Math.PI*2;
-        const spread = 60 + Math.random()*150;
-        const outX = Math.cos(angle) * spread;
-        const outY = Math.sin(angle) * spread * 0.5;
-        const fallY = vh + 140 - startY*(vh/100);
-        const rotZ = 180 + Math.random()*540;
-        const dur = 2000 + Math.random()*1400;
-
-        b.animate([
-          { transform:`translate(0,0) scale(0) rotate(0deg)`, opacity:0, offset:0 },
-          { transform:`translate(0,0) scale(1.15) rotate(${rotZ*0.15}deg)`, opacity:1, offset:0.14 },
-          { transform:`translate(${outX}px, ${outY}px) scale(1) rotate(${rotZ*0.45}deg)`, opacity:1, offset:0.4 },
-          { transform:`translate(${outX*1.3}px, ${fallY}px) scale(0.85) rotate(${rotZ}deg)`, opacity:0.1, offset:1 }
-        ], { duration: dur, easing:'cubic-bezier(.16,.7,.2,1)' });
-
-        setTimeout(()=>b.remove(), dur + 300);
-      }, i*16);
+  // ---------- Bunga besar penuh layar saat buka undangan: masuk dari kiri & kanan, fade in/out ----------
+  function spawnMegaPetals(){
+    const rows = 12;
+    for(let i=0;i<rows;i++){
+      const topPct = (i/(rows-1))*100;
+      createMegaPetal(topPct, 'from-left', i*70);
+      createMegaPetal(topPct, 'from-right', i*70 + 90);
     }
+  }
+  function createMegaPetal(topPct, dir, delay){
+    const el = document.createElement('div');
+    el.className = 'mega-petal ' + dir;
+    el.textContent = petalEmojis[Math.floor(Math.random()*petalEmojis.length)];
+    el.style.top = topPct + '%';
+    el.style.left = (dir === 'from-left' ? (2 + Math.random()*38) : (60 + Math.random()*38)) + '%';
+    el.style.fontSize = (55 + Math.random()*55) + 'px';
+    const dur = 2100 + Math.random()*500;
+    el.style.setProperty('--dur', dur + 'ms');
+    el.style.animationDelay = delay + 'ms';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(), dur + delay + 200);
+  }
+
+function openInvitation(){
+    spawnMegaPetals();
 
     setTimeout(()=>{
       document.getElementById('cover').style.transition = 'opacity 0.6s ease';
@@ -937,7 +978,7 @@ function openInvitation(){
     else{ music.pause(); btn.classList.remove('spinning'); }
   }
 
-  const weddingDate = new Date('2026-08-10T11:00:00+08:00').getTime();
+  const weddingDate = new Date('2026-08-09T08:00:00+08:00').getTime();
   function renderCountdown(){
     const now = Date.now();
     const diff = Math.max(0, weddingDate - now);
@@ -955,11 +996,17 @@ function openInvitation(){
   renderCountdown();
   setInterval(renderCountdown, 1000);
 
+  const calAkadStart = '20260809T000000Z';
+  const calAkadEnd = '20260809T020000Z';
+  const calAkadUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Akad Nikah Saskia & Bilal')}&dates=${calAkadStart}/${calAkadEnd}&details=${encodeURIComponent('Akad Nikah Saskia Widya Ningsih & Muh. Bilal Genda Ali')}&location=${encodeURIComponent('Prum. Griya Pondok Mandiri Blok B/1 Bontojolong Maros')}`;
+  document.getElementById('add-cal-link-akad').href = calAkadUrl;
+  document.getElementById('add-cal-link-akad').target = '_blank';
+
   const calStart = '20260810T030000Z';
   const calEnd = '20260810T090000Z';
-  const calUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Pernikahan Saskia & Bilal')}&dates=${calStart}/${calEnd}&details=${encodeURIComponent('Akad & Resepsi Pernikahan Saskia Widya Ningsih & Bilal Putu Kacang')}&location=${encodeURIComponent('Perumahan Griya Bonto Jolong')}`;
-  document.getElementById('add-cal-link').href = calUrl;
-  document.getElementById('add-cal-link').target = '_blank';
+  const calUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Resepsi Pernikahan Saskia & Bilal')}&dates=${calStart}/${calEnd}&details=${encodeURIComponent('Resepsi Pernikahan Saskia Widya Ningsih & Muh. Bilal Genda Ali')}&location=${encodeURIComponent('Prum. Griya Pondok Mandiri Blok B/1 Bontojolong Maros')}`;
+  document.getElementById('add-cal-link-resepsi').href = calUrl;
+  document.getElementById('add-cal-link-resepsi').target = '_blank';
 
   function copyText(text, btnEl){
     navigator.clipboard.writeText(text).then(()=>{
@@ -987,7 +1034,7 @@ function openInvitation(){
           { name: 'Untuk (dari link)', value: guestName || '-', inline: false },
           { name: 'Ucapan & Doa', value: entry.pesan && entry.pesan.trim() ? entry.pesan : '(tidak ada pesan)', inline: false }
         ],
-        footer: { text: 'Saskia & Bilal • 10 Agustus 2026' },
+        footer: { text: 'Saskia & Bilal • 9–10 Agustus 2026' },
         timestamp: new Date().toISOString()
       }]
     };
