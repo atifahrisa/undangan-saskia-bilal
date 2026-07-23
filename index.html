@@ -97,7 +97,7 @@
   .corner-bouquet.top-right{ top:-14px; right:-14px; transform:rotate(8deg); }
   .corner-bouquet.bottom-left{ bottom:-14px; left:-14px; transform:rotate(188deg); }
   section{ overflow:hidden; }
-  section > *:not(.corner-bouquet){ position:relative; z-index:1; }
+  section > *:not(.corner-bouquet):not(.section-bg){ position:relative; z-index:1; }
 
   #cover{
     position:fixed; inset:0; z-index:200;
@@ -182,8 +182,12 @@
   @keyframes fadeUp{from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);}}
 
   section{padding:52px 28px; position:relative;}
-  .photo-section{
-    background-size:cover; background-position:center; background-repeat:no-repeat;
+  .photo-section{ position:relative; }
+  .section-bg{
+    position:absolute; inset:-14px; z-index:0; pointer-events:none;
+    background-size:cover; background-position:center 22%; background-repeat:no-repeat;
+    filter:blur(6px) saturate(1.05);
+    transform:scale(1.05);
   }
   .section-eyebrow{
     text-align:center; font-size:11px; letter-spacing:4px; text-transform:uppercase;
@@ -750,13 +754,18 @@
   // ---------- Latar foto momen pernikahan di tiap section (bukan cover) ----------
   const momentPhotos = ['galeri-1.jpeg','galeri-2.jpeg','galeri-3.jpeg','galeri-4.jpeg','galeri-5.jpeg','galeri-6.jpeg'];
   function applyPhotoBackgrounds(){
-    document.querySelectorAll('.photo-section').forEach(sec=>{
-      const file = momentPhotos[Math.floor(Math.random()*momentPhotos.length)];
+    document.querySelectorAll('.photo-section').forEach((sec, idx)=>{
+      // Bergilir sesuai urutan section (bukan acak penuh) supaya tidak
+      // "kebetulan" jatuh ke foto yang sama berkali-kali di banyak halaman.
+      const file = momentPhotos[idx % momentPhotos.length];
       const dark = sec.dataset.tone === 'dark';
       const overlay = dark
-        ? 'linear-gradient(180deg, rgba(74,10,21,0.60), rgba(74,10,21,0.66))'
-        : 'linear-gradient(180deg, rgba(255,248,233,0.58), rgba(253,243,224,0.64))';
-      sec.style.backgroundImage = `${overlay}, url('${file}')`;
+        ? 'linear-gradient(180deg, rgba(74,10,21,0.62), rgba(74,10,21,0.68))'
+        : 'linear-gradient(180deg, rgba(255,248,233,0.60), rgba(253,243,224,0.66))';
+      const bg = document.createElement('div');
+      bg.className = 'section-bg';
+      bg.style.backgroundImage = `${overlay}, url('${file}')`;
+      sec.insertBefore(bg, sec.firstChild);
     });
   }
   applyPhotoBackgrounds();
